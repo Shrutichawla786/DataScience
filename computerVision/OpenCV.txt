@@ -1,0 +1,62 @@
+OpenCV
+
+import cv2
+
+# Open the default video capture device (usually the webcam)
+cap = cv2.VideoCapture(0)
+
+# Check if camera opened successfully
+if not cap.isOpened():
+    print("Error opening camera!")
+    exit()
+
+while True:
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+
+    # If frame is read correctly, display it
+    if ret:
+        cv2.imshow('Camera', frame)
+
+        # Wait for 'q' key press to quit
+        if cv2.waitKey(1) == ord('q'):
+            break
+
+    # If frame is not read correctly, break the loop
+    else:
+        print("Error reading frame!")
+        break
+
+# Release the capture and close all windows
+cap.release()
+cv2.destroyAllWindows()
+
+
+Import OpenCV: Begin by importing the OpenCV library using import cv2.
+
+Open Video Capture:
+
+Create a video capture object using cv2.VideoCapture(0). Here, 0 indicates the default video capture device, which is usually your webcam.
+Open Camera Check:
+
+Use an if statement to check if the camera opened successfully using cap.isOpened(). If it doesn't open, print an error message and exit the program.
+Video Capture Loop:
+
+Employ a while True loop to continuously capture and display frames from the camera.
+Capture Frame:
+
+Inside the loop, use ret, frame = cap.read() to capture a frame from the camera. ret is a boolean flag indicating if the frame was read successfully, and frame is the captured image data.
+Display Frame:
+
+If the frame is read correctly (ret is True), use cv2.imshow('Camera', frame) to display the captured frame in a window named "Camera".
+Quit on 'q' press:
+
+Use cv2.waitKey(1) to wait for a key press for 1 millisecond. If the key pressed is 'q', break out of the loop using break. This allows you to quit the program by pressing the 'q' key.
+Error Handling:
+
+If ret is False (frame not read), print an error message and break out of the loop.
+Release Camera and Close Windows:
+
+After the loop exits, release the video capture object using cap.release() to free up resources.
+Close all windows created by OpenCV using cv2.destroyAllWindows().
+This code snippet demonstrates a basic setup for capturing video from your webcam using OpenCV in Python. You can extend this code to perform further image processing or computer vision tasks on the captured frames.
